@@ -1,4 +1,3 @@
-import { defineConfig } from 'eslint/config';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
@@ -7,9 +6,9 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
 import prettierConfig from 'eslint-config-prettier';
 
-export default defineConfig([
+export default [
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -59,4 +58,4 @@ export default defineConfig([
     },
   },
   prettierConfig,
-]);
+];
