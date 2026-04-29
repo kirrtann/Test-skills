@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Running pre-push checks (type-check + e2e tests)..."
+npm run type-check && npm run test:e2e
+
+if [ $? -ne 0 ]; then
+  echo "❌ Pre-push checks failed. Push aborted."
+  exit 1
+fi
+
+echo "✅ All checks passed."
