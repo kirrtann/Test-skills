@@ -2,14 +2,21 @@
 
 ## Project File Structure
 
-_Last updated: 2026-04-29 06:58 UTC_
+_Last updated: 2026-04-29 11:31 UTC_
 
 ```
 .
 ├── .agents/
 │   └── skills/
-│       └── git-commit-changelog/
-│           └── SKILL.md
+│       ├── git-commit-changelog/
+│       │   └── SKILL.md
+│       └── i18n-translation/
+│           ├── SKILL.md
+│           └── references/
+│               ├── i18next-config.md
+│               ├── i18next-types.md
+│               ├── locale-templates.md
+│               └── next-intl-config.md
 ├── .env.example
 ├── .env.local
 ├── .env.production
@@ -55,6 +62,14 @@ _Last updated: 2026-04-29 06:58 UTC_
 │   │   └── fcdfd5a135c7417a1e0523420179936345522295.md
 │   └── index.html
 ├── postcss.config.mjs
+├── public/
+│   └── locales/
+│       ├── en/
+│       │   ├── common.json
+│       │   └── errors.json
+│       └── fr/
+│           ├── common.json
+│           └── errors.json
 ├── src/
 │   ├── app/
 │   │   ├── globals.css
@@ -78,13 +93,16 @@ _Last updated: 2026-04-29 06:58 UTC_
 │   │   └── ui/
 │   │       ├── AppointmentForm.tsx
 │   │       ├── Button.tsx
-│   │       └── DataTable.tsx
+│   │       ├── DataTable.tsx
+│   │       └── LocaleSwitcher.tsx
 │   ├── constants/
 │   │   └── index.ts
 │   ├── hooks/
 │   │   └── api/
 │   │       ├── index.ts
 │   │       └── useUsers.ts
+│   ├── i18n/
+│   │   └── config.ts
 │   ├── lib/
 │   │   ├── config.ts
 │   │   ├── utils.ts
@@ -133,6 +151,33 @@ _Last updated: 2026-04-29 06:58 UTC_
 ├── tsconfig.json
 └── tsconfig.tsbuildinfo
 ```
+
+---
+
+## 2026-04-29 — feat(i18n): add i18next internationalization with EN/FR locales [new]
+
+**Commit:** `3dfb57e`
+**Date:** 2026-04-29 11:31 UTC
+**Action:** new
+
+### Changes
+
+- NEW: `public/locales/en/common.json` — English translation strings for common UI text
+- NEW: `public/locales/en/errors.json` — English translation strings for error messages
+- NEW: `public/locales/fr/common.json` — French translation strings for common UI text
+- NEW: `public/locales/fr/errors.json` — French translation strings for error messages
+- NEW: `src/i18n/config.ts` — i18next configuration with EN/FR language support and namespace setup
+- NEW: `src/components/ui/LocaleSwitcher.tsx` — Locale switcher UI component for toggling between EN and FR
+- NEW: `.agents/skills/i18n-translation/SKILL.md` — Agent skill definition for full i18n setup workflows
+- NEW: `.agents/skills/i18n-translation/references/i18next-config.md` — Reference docs for i18next config patterns
+- NEW: `.agents/skills/i18n-translation/references/i18next-types.md` — TypeScript type definitions reference for i18next
+- NEW: `.agents/skills/i18n-translation/references/locale-templates.md` — Locale JSON template structures reference
+- NEW: `.agents/skills/i18n-translation/references/next-intl-config.md` — Reference docs for next-intl config patterns
+- UPDATE: `package.json` — Added i18n dependencies (i18next, react-i18next, i18next-http-backend, i18next-browser-languagedetector)
+- UPDATE: `package-lock.json` — Lockfile updated for new i18n packages
+- UPDATE: `src/app/layout.tsx` — Integrated i18n provider at root layout level
+- UPDATE: `src/app/providers.tsx` — Added I18nextProvider wrapping the app with i18n instance
+- UPDATE: `src/components/layout/Header.tsx` — Added LocaleSwitcher component to the site header
 
 ---
 
