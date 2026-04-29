@@ -1,0 +1,13 @@
+{
+  "validation": {
+    "required": "This field is required.",
+    "invalid_email": "Please enter a valid email address.",
+    "min_length": "Must be at least {{count}} characters.",
+    "max_length": "Cannot exceed {{count}} characters."
+  },
+  "server": {
+    "generic": "Something went wrong. Please try again.",
+    "not_found": "The requested resource was not found.",
+    "unauthorized": "You are not authorised to perform this action."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "appointments": "Appointments",
+    "hospital": "Hospital",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "button": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back"
+  },
+  "label": {
+    "loading": "Loading…",
+    "noData": "No data available"
+  },
+  "welcome": "Welcome, {{name}}!",
+  "item_one": "{{count}} item",
+  "item_other": "{{count}} items"
+}

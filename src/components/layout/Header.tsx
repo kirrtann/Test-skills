@@ -2,15 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { FiBell, FiMenu, FiX } from 'react-icons/fi';
 
 import { Button } from '../ui/Button';
+import { LocaleSwitcher } from '../ui/LocaleSwitcher';
 
 import { useAppStore } from '@/store/useAppStore';
 
 export function Header() {
   const { sidebarOpen, toggleSidebar, user } = useAppStore();
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm">
@@ -34,21 +37,21 @@ export function Header() {
           id="nav-home-link"
           className={pathname === '/' ? 'text-brand-600' : 'hover:text-gray-900'}
         >
-          Home
+          {t('nav.home')}
         </Link>
         <Link
           href="/dashboard"
           id="nav-dashboard-link"
           className={pathname.startsWith('/dashboard') ? 'text-brand-600' : 'hover:text-gray-900'}
         >
-          Dashboard
+          {t('nav.dashboard')}
         </Link>
         <Link
           href="/appointment"
           id="nav-appointment-link"
           className={pathname.startsWith('/appointment') ? 'text-brand-600' : 'hover:text-gray-900'}
         >
-          Appointments
+          {t('nav.appointments')}
         </Link>
         <Link
           href="/hospital/about"
@@ -57,7 +60,7 @@ export function Header() {
             pathname.startsWith('/hospital/about') ? 'text-brand-600' : 'hover:text-gray-900'
           }
         >
-          About
+          {t('nav.about')}
         </Link>
         <Link
           href="/hospital/contact"
@@ -66,11 +69,12 @@ export function Header() {
             pathname.startsWith('/hospital/contact') ? 'text-brand-600' : 'hover:text-gray-900'
           }
         >
-          Contact
+          {t('nav.contact')}
         </Link>
       </nav>
 
       <div className="flex items-center gap-2">
+        <LocaleSwitcher />
         <button
           id="notifications-btn"
           aria-label="Notifications"
