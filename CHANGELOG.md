@@ -2,7 +2,7 @@
 
 ## Project File Structure
 
-_Last updated: 2026-04-29 06:50 UTC_
+_Last updated: 2026-04-29 06:58 UTC_
 
 ```
 .
@@ -14,9 +14,13 @@ _Last updated: 2026-04-29 06:50 UTC_
 ├── .env.local
 ├── .env.production
 ├── .env.stage
+├── .eslintignore
+├── .gitignore
 ├── .husky/
 │   ├── pre-commit
 │   └── pre-push
+├── .prettierignore
+├── .prettierrc
 ├── .vscode/
 │   ├── extensions.json
 │   └── settings.json
@@ -30,6 +34,7 @@ _Last updated: 2026-04-29 06:50 UTC_
 ├── next.config.ts
 ├── next-env.d.ts
 ├── package.json
+├── package-lock.json
 ├── playwright.config.ts
 ├── playwright-report/
 │   ├── data/
@@ -125,8 +130,21 @@ _Last updated: 2026-04-29 06:50 UTC_
 │   │   ├── error-context.md
 │   │   └── test-failed-1.png
 │   └── .last-run.json
-└── tsconfig.json
+├── tsconfig.json
+└── tsconfig.tsbuildinfo
 ```
+
+---
+
+## 2026-04-29 — feat(dashboard): redesign header and stat cards with gradient hero and trend indicators [update]
+
+**Commit:** `d3a993b`
+**Date:** 2026-04-29 06:58 UTC
+**Action:** update
+
+### Changes
+
+- UPDATE: `src/app/dashboard/page.tsx` — Replaced flat header with an indigo-to-cyan gradient hero banner (greeting, decorative circles, glass-effect "New Appointment" button); split stat card `color` prop into `iconBg`, `iconColor`, and `accent` (left border); added `FiTrendingUp`/`FiTrendingDown` indicators to stat cards; added per-doctor `avatarBg` colours; polished appointments table header (font weights, padding, subtitle line, "View all" pill); changed page background from `bg-gray-50` to `bg-slate-50`
 
 ---
 
