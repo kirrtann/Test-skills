@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiBell, FiMenu, FiX } from 'react-icons/fi';
 
-import { useAppStore } from '@/store/useAppStore';
-
 import { Button } from '../ui/Button';
+
+import { useAppStore } from '@/store/useAppStore';
 
 export function Header() {
   const { sidebarOpen, toggleSidebar, user } = useAppStore();
@@ -24,11 +24,11 @@ export function Header() {
           {sidebarOpen ? <FiX size={20} /> : <FiMenu size={20} />}
         </button>
         <Link href="/" className="text-lg font-bold text-brand-600" id="header-logo-link">
-          setup-testing
+          🏥 MediCare
         </Link>
       </div>
 
-      <nav className="hidden gap-6 md:flex text-sm font-medium text-gray-600">
+      <nav className="hidden gap-6 text-sm font-medium text-gray-600 md:flex">
         <Link
           href="/"
           id="nav-home-link"
@@ -43,10 +43,39 @@ export function Header() {
         >
           Dashboard
         </Link>
+        <Link
+          href="/appointment"
+          id="nav-appointment-link"
+          className={pathname.startsWith('/appointment') ? 'text-brand-600' : 'hover:text-gray-900'}
+        >
+          Appointments
+        </Link>
+        <Link
+          href="/hospital/about"
+          id="nav-about-link"
+          className={
+            pathname.startsWith('/hospital/about') ? 'text-brand-600' : 'hover:text-gray-900'
+          }
+        >
+          About
+        </Link>
+        <Link
+          href="/hospital/contact"
+          id="nav-contact-link"
+          className={
+            pathname.startsWith('/hospital/contact') ? 'text-brand-600' : 'hover:text-gray-900'
+          }
+        >
+          Contact
+        </Link>
       </nav>
 
       <div className="flex items-center gap-2">
-        <button id="notifications-btn" aria-label="Notifications" className="rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-100">
+        <button
+          id="notifications-btn"
+          aria-label="Notifications"
+          className="rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-100"
+        >
           <FiBell size={18} />
         </button>
         {user ? (

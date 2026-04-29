@@ -1,6 +1,6 @@
 ---
 name: git-commit-changelog
-description: 'Suggest conventional commit messages and append compact JSONL entries to changelog.md after commits. Use when preparing commits, generating commit suggestions, or updating changelog history with new/update/delete actions.'
+description: 'Suggest conventional commit messages and write detailed human-readable CHANGELOG.md entries after commits. Tracks date, commit message, per-file changes (new/update/delete), and keeps a live project file structure. Use when preparing commits, generating commit suggestions, or updating changelog history.'
 argument-hint: 'Describe your staged changes or say: suggest commit messages'
 user-invocable: true
 ---
@@ -9,109 +9,148 @@ user-invocable: true
 
 ## Purpose
 
-Help agents and users make concise, conventional commit messages and maintain a compact, token-efficient changelog that records every commit and whether it was a `new`, `update`, or `delete` event.
+Help agents and users make concise, conventional commit messages and maintain a detailed, human-readable `CHANGELOG.md` that records every commit with full context: date, message, per-file change details, and a live project file structure snapshot.
 
 ## When to trigger
 
 - When preparing `git add .` + `git commit` operations.
-- When creating or updating `changelog.md` after a commit.
+- When creating or updating `CHANGELOG.md` after a commit.
 
 ## Goals
 
 - Recommend short, conventional commit messages (types: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`, `perf`, `ci`).
-- Encourage an explicit small `action` marker (`new`, `update`, `delete`) for each commit so changelog entries can be filtered easily.
-- Store each commit as a compact, newline-delimited JSON (JSONL) entry in `changelog.md` to minimize token use while preserving structured history.
+- Encourage an explicit action marker (`new`, `update`, `delete`) per commit.
+- Write a detailed, readable entry to `CHANGELOG.md` after every commit.
+- Regenerate the **Project File Structure** section in `CHANGELOG.md` on every skill invocation.
 
-## Commit message guidance (developer-friendly)
+## Commit message guidance
 
-- Use this template:
-  - `type(scope): short-description [action]`
-  - Examples:
-    - `feat(auth): add login form [new]`
-    - `fix(api): handle null response [update]`
-    - `refactor(db): remove legacy index [delete]`
-- Recommended `type` pickups for quick suggestions: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`, `perf`, `ci`.
-- For short commit messages, prefer verbs like `add`, `update`, `remove` that map to `new`, `update`, `delete` actions.
+- Template: `type(scope): short-description [action]`
+- Examples:
+  - `feat(auth): add login form [new]`
+  - `fix(api): handle null response [update]`
+  - `refactor(db): remove legacy index [delete]`
+- Types: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`, `perf`, `ci`
+- Verbs `add` → `new`, `update/fix` → `update`, `remove/delete` → `delete`
 
-## Changelog storage format (token-efficient)
+## CHANGELOG.md format
 
-- File: `changelog.md` at repo root.
-- Each line is a compact JSON object (JSONL). Example line:
-  {"h":"a1b2c3d","t":"feat","s":"auth","m":"add login form","a":"new","ts":"2026-04-29T12:34:56Z"}
+**File:** `CHANGELOG.md` at repo root (uppercase filename).
 
-  Field keys (short names to save tokens):
-  - `h`: commit short hash
-  - `t`: type (feat, fix, ...)
-  - `s`: scope
-  - `m`: message (short)
-  - `a`: action (`new`/`update`/`delete`)
-  - `ts`: UTC timestamp in ISO 8601
+Each commit appends a block like this:
 
-- Store one JSON object per line (no pretty printing) to minimize token usage.
+```
+---
+## YYYY-MM-DD — type(scope): short description [action]
 
-## Append snippet (POSIX shell)
+**Commit:** `abc1234`
+**Date:** YYYY-MM-DD HH:MM UTC
+**Action:** new | update | delete
 
-Use this snippet after committing to append the entry to `changelog.md`:
-
-```sh
-# After running `git commit -m "type(scope): message [action]"`
-HASH=$(git rev-parse --short HEAD)
-MSG_FULL=$(git log -1 --pretty=%B | tr -d '\n')
-# Parse fields (simple shell parse; adjust for stricter parsing if needed)
-# Expect message format: type(scope): message [action]
-TYPE=$(echo "$MSG_FULL" | sed -n 's/^\([a-zA-Z0-9_-]*\)(\([^)]*\)):\s*\([^\[]*\)\s*\[\?\([a-zA-Z]*\)\]?/\1/p')
-SCOPE=$(echo "$MSG_FULL" | sed -n 's/^\([a-zA-Z0-9_-]*\)(\([^)]*\)):.*/\2/p')
-SHORT_MSG=$(echo "$MSG_FULL" | sed -n 's/^[^:]*:\s*\(.*\)\s*\[.*\]/\1/p')
-# Fallbacks if parsing fails
-[ -z "$TYPE" ] && TYPE="chore"
-[ -z "$SCOPE" ] && SCOPE=""
-[ -z "$SHORT_MSG" ] && SHORT_MSG="$MSG_FULL"
-# action detection: look for [new], [update], [delete]
-ACTION=$(echo "$MSG_FULL" | sed -n 's/.*\[\(new\|update\|delete\)\].*/\1/p')
-[ -z "$ACTION" ] && ACTION="update"
-TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-# Write JSONL (escape double quotes in message)
-ESC_MSG=$(printf '%s' "$SHORT_MSG" | sed 's/\\/\\\\/g; s/"/\\\"/g')
-printf '{"h":"%s","t":"%s","s":"%s","m":"%s","a":"%s","ts":"%s"}\n' "$HASH" "$TYPE" "$SCOPE" "$ESC_MSG" "$ACTION" "$TS" >> changelog.md
+### Changes
+- NEW: path/to/new-file.ts — brief description of what was added
+- UPDATE: path/to/changed-file.tsx — brief description of what changed
+- DELETE: path/to/removed-file.ts — brief description of what was removed
 ```
 
-Notes:
+Rules for the Changes list:
 
-- This is intentionally simple and dependency-free. For more robust parsing use a small Node/Python script.
-- Keep `changelog.md` in the repo so agents can read it cheaply (one-line per commit).
+- Use `NEW:` for files that did not exist before this commit.
+- Use `UPDATE:` for files that existed and were modified.
+- Use `DELETE:` for files that were removed.
+- Add a short plain-English note after the `—` dash explaining what the file does or why it changed.
+
+## Project File Structure section
+
+At the **top** of `CHANGELOG.md`, maintain a fenced code block showing the current project tree. Regenerate it on every skill invocation using:
+
+```sh
+find . -not -path './.git/*' -not -path './node_modules/*' -not -path './.next/*' \
+  | sort | sed 's|[^/]*/|  |g'
+```
+
+The section looks like:
+
+```
+# CHANGELOG
+
+## Project File Structure
+_Last updated: YYYY-MM-DD HH:MM UTC_
+
+\`\`\`
+(tree output here)
+\`\`\`
+
+---
+(commit entries below, newest first)
+```
+
+Update this section by replacing it in full every time the skill runs.
 
 ## Agent behavior when invoked
 
-- Offer 3 suggested commit messages based on staged changes (brief): one `feat`/`fix` candidate, one `refactor`/`chore`, and one minimal bugfix or docs change if applicable.
-- Show the recommended conventional prefix and suggested `[action]` tag derived from verbs in the message.
-- After user selects/edits a message, run `git commit -m "..."`, then append a JSONL entry to `changelog.md` using the snippet above.
+1. Run `git status` and `git diff --cached` (or `git diff HEAD` if nothing staged) to understand the changes.
+2. Offer **3 suggested commit messages**: one `feat`/`fix`, one `refactor`/`chore`, one `docs`/`style` or minimal fix.
+3. Wait for user to confirm or edit the message.
+4. Run `git add . && git commit -m "..."`.
+5. After commit:
+   a. Get the commit hash: `git rev-parse --short HEAD`
+   b. Get the list of changed files and their status (A/M/D): `git show --stat HEAD`
+   c. Build the detailed changelog entry (see format above).
+   d. Regenerate the Project File Structure tree.
+   e. Write the updated `CHANGELOG.md`:
+   - Replace the Project File Structure section at the top.
+   - Prepend the new commit entry block after the structure section (newest first).
 
-## Parsing & consumption
+## Shell snippet for appending a detailed entry
 
-- Agents should read `changelog.md` line-by-line and parse JSON per line. This is fast and token-efficient.
-- Use `a` (action) to quickly show `new`/`update`/`delete` filters.
+```sh
+HASH=$(git rev-parse --short HEAD)
+DATE=$(date -u +%Y-%m-%d)
+TIME=$(date -u +%H:%M)
+MSG=$(git log -1 --pretty=%B | tr -d '\n')
 
-## Example workflow for user or agent
+# Get changed files with status
+CHANGED=$(git show --stat HEAD | grep '|' | awk '{print $1}')
+ADDED=$(git show --name-status HEAD | grep '^A' | awk '{print $2}')
+MODIFIED=$(git show --name-status HEAD | grep '^M' | awk '{print $2}')
+DELETED=$(git show --name-status HEAD | grep '^D' | awk '{print $2}')
 
-- `git add .`
-- Agent suggests: `feat(api): add user list endpoint [new]`
-- User accepts -> Agent runs `git commit -m "feat(api): add user list endpoint [new]"`
-- Agent appends JSONL entry to `changelog.md` using the snippet.
+# Regenerate file tree
+TREE=$(find . -not -path './.git/*' -not -path './node_modules/*' -not -path './.next/*' | sort | sed 's|[^/]*/|  |g')
+```
 
-## Trigger phrases for automation
+The agent then writes the full entry using the values above (no raw shell scripting required — the agent reads the output and writes the markdown block directly).
+
+## Example CHANGELOG.md entry
+
+```markdown
+---
+
+## 2026-04-29 — feat(hospital): add hospital booking pages and appointment form [new]
+
+**Commit:** `125cc61`
+**Date:** 2026-04-29 06:05 UTC
+**Action:** new
+
+### Changes
+
+- NEW: src/app/hospital/page.tsx — Hospital home page with intro text and AppointmentForm
+- NEW: src/app/hospital/about/page.tsx — About page for the hospital section
+- NEW: src/app/hospital/contact/page.tsx — Contact page for the hospital section
+- NEW: src/components/ui/AppointmentForm.tsx — Form component for booking appointments (name, email, department, date)
+- UPDATE: src/app/page.tsx — Added Hospital Booking link; changed docs button style to btn-ghost
+```
+
+## Trigger phrases
 
 - "prepare commit" / "suggest commit messages" / "commit and update changelog"
 
-## Minimal implementation notes (for devs)
-
-- Prefer JSONL to minimize tokens and keep history compact.
-- If repo wants human-readable changelog, generate a derived `CHANGELOG.md` from `changelog.md` on release only.
-
 ## Security & correctness
 
-- Do not auto-run commits without explicit confirmation.
-- If commit message parsing fails, prompt user for `type`, `scope`, and `action` values before appending.
+- Do not auto-run commits without explicit user confirmation.
+- If commit message parsing fails, ask the user for `type`, `scope`, and `action` before writing the entry.
 
 ---
 
-Skill created to help agents and users keep structured, low-token changelogs and consistent commit messages.
+Updated to write detailed human-readable CHANGELOG.md with per-file change descriptions and a live project file structure section.

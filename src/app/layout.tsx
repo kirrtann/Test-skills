@@ -8,8 +8,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'setup-testing',
-  description: 'A production-ready Next.js 14 App Router project',
+  title: 'MediCare Hospital',
+  description: 'World-class healthcare with compassionate doctors and modern facilities.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

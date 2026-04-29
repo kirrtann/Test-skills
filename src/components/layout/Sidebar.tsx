@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { FiGrid, FiUsers, FiSettings, FiHome } from 'react-icons/fi';
+import { FiGrid, FiCalendar, FiInfo, FiPhone, FiHome } from 'react-icons/fi';
 
 const navItems = [
   { href: '/', label: 'Home', icon: FiHome, id: 'sidebar-nav-home' },
   { href: '/dashboard', label: 'Dashboard', icon: FiGrid, id: 'sidebar-nav-dashboard' },
-  { href: '/dashboard/users', label: 'Users', icon: FiUsers, id: 'sidebar-nav-users' },
-  { href: '/dashboard/settings', label: 'Settings', icon: FiSettings, id: 'sidebar-nav-settings' },
+  { href: '/appointment', label: 'Appointments', icon: FiCalendar, id: 'sidebar-nav-appointment' },
+  { href: '/hospital/about', label: 'About', icon: FiInfo, id: 'sidebar-nav-about' },
+  { href: '/hospital/contact', label: 'Contact', icon: FiPhone, id: 'sidebar-nav-contact' },
 ];
 
 export function Sidebar() {
