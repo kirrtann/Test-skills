@@ -1,0 +1,24 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome back, {{name}}",
+  "stats": {
+    "totalUsers": "Total Users",
+    "activeToday": "Active Today",
+    "revenue": "Revenue",
+    "growth": "Growth"
+  },
+  "table": {
+    "name": "Name",
+    "status": "Status",
+    "date": "Date",
+    "actions": "Actions",
+    "empty": "No data available",
+    "page": "Page {{current}} of {{total}}"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No new notifications",
+    "new_one": "{{count}} new notification",
+    "new_other": "{{count}} new notifications"
+  }
+}

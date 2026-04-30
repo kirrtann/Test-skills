@@ -1,0 +1,24 @@
+{
+  "title": "Tableau de bord",
+  "welcome": "Bon retour, {{name}}",
+  "stats": {
+    "totalUsers": "Total utilisateurs",
+    "activeToday": "Actifs aujourd'hui",
+    "revenue": "Revenus",
+    "growth": "Croissance"
+  },
+  "table": {
+    "name": "Nom",
+    "status": "Statut",
+    "date": "Date",
+    "actions": "Actions",
+    "empty": "Aucune donnée disponible",
+    "page": "Page {{current}} sur {{total}}"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "Aucune nouvelle notification",
+    "new_one": "{{count}} nouvelle notification",
+    "new_other": "{{count}} nouvelles notifications"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "डैशबोर्ड",
+  "welcome": "वापस स्वागत है, {{name}}",
+  "stats": {
+    "totalUsers": "कुल उपयोगकर्ता",
+    "activeToday": "आज सक्रिय",
+    "revenue": "राजस्व",
+    "growth": "विकास"
+  },
+  "table": {
+    "name": "नाम",
+    "status": "स्थिति",
+    "date": "तारीख",
+    "actions": "क्रियाएं",
+    "empty": "कोई डेटा उपलब्ध नहीं",
+    "page": "{{total}} में से पृष्ठ {{current}}"
+  },
+  "notifications": {
+    "title": "सूचनाएं",
+    "empty": "कोई नई सूचना नहीं",
+    "new_one": "{{count}} नई सूचना",
+    "new_other": "{{count}} नई सूचनाएं"
+  }
+}

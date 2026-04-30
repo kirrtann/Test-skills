@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "loading": "Loading..."
+  },
+  "labels": {
+    "search": "Search",
+    "filter": "Filter",
+    "noResults": "No results found",
+    "required": "Required",
+    "optional": "Optional"
+  },
+  "add-to-cart": {
+    "title": "Add to Cart",
+    "columns": {
+      "sell-disc": "Sell Dis.(%)",
+      "sell-price-per-ct": "Sell Price/Ct."
+    }
+  },
+  "form": {
+    "company-name": "Company Name",
+    "company-placeholder": "Select Company Name",
+    "buyer-name": "Buyer Name",
+    "buyer-placeholder": "Select Buyer Name",
+    "salesman": "Salesman",
+    "salesman-placeholder": "Select Salesman",
+    "broker": "Broker",
+    "broker-placeholder": "No Broker",
+    "bill-type": "Bill Type",
+    "bill-type-placeholder": "Dollar Bill",
+    "terms": "Terms",
+    "terms-placeholder": "Advance Payment",
+    "remark": "Remark",
+    "remark-placeholder": "Add note here...",
+    "error": {
+      "company-required": "Company Name is required",
+      "buyer-required": "Buyer Name is required",
+      "salesman-required": "Salesman is required"
+    }
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "pending": "Pending",
+    "success": "Success",
+    "error": "Error"
+  },
+  "greeting": "Hello, {{name}}!",
+  "items_one": "{{count}} item",
+  "items_other": "{{count}} items"
+}

@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "હોમ",
+    "dashboard": "ડેશબોર્ડ",
+    "profile": "પ્રોફાઇલ",
+    "settings": "સેટિંગ્સ",
+    "logout": "લૉગઆઉટ"
+  },
+  "buttons": {
+    "submit": "સબમિટ કરો",
+    "cancel": "રદ કરો",
+    "save": "સાચવો",
+    "delete": "કાઢી નાખો",
+    "edit": "સંપાદિત કરો",
+    "back": "પાછળ",
+    "next": "આગળ",
+    "close": "બંધ કરો",
+    "loading": "લોડ થઈ રહ્યું છે..."
+  },
+  "labels": {
+    "search": "શોધો",
+    "filter": "ફિલ્ટર",
+    "noResults": "કોઈ પરિણામ મળ્યા નહીં",
+    "required": "જરૂરી",
+    "optional": "વૈકલ્પિક"
+  },
+  "form": {
+    "company-name": "કંપનીનું નામ",
+    "company-placeholder": "કંપનીનું નામ પસંદ કરો",
+    "buyer-name": "ખરીદારનું નામ",
+    "buyer-placeholder": "ખરીદારનું નામ પસંદ કરો",
+    "salesman": "વેચાણ પ્રતિનિધિ",
+    "salesman-placeholder": "વેચાણ પ્રતિનિધિ પસંદ કરો",
+    "broker": "દલાલ",
+    "broker-placeholder": "કોઈ દલાલ નહીં",
+    "bill-type": "બિલ પ્રકાર",
+    "bill-type-placeholder": "ડૉલર બિલ",
+    "terms": "શરતો",
+    "terms-placeholder": "અગ્રિમ ચુકવણી",
+    "remark": "ટિપ્પણી",
+    "remark-placeholder": "અહીં નોંધ ઉમેરો...",
+    "error": {
+      "company-required": "કંપનીનું નામ જરૂરી છે",
+      "buyer-required": "ખરીદારનું નામ જરૂરી છે",
+      "salesman-required": "વેચાણ પ્રતિનિધિ જરૂરી છે"
+    }
+  },
+  "status": {
+    "active": "સક્રિય",
+    "inactive": "નિષ્ક્રિય",
+    "pending": "બાકી",
+    "success": "સફળ",
+    "error": "ભૂલ"
+  },
+  "greeting": "નમસ્તે, {{name}}!",
+  "items_one": "{{count}} વસ્તુ",
+  "items_other": "{{count}} વસ્તુઓ"
+}

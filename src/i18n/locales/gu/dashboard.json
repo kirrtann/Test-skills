@@ -1,0 +1,24 @@
+{
+  "title": "ડેશબોર્ડ",
+  "welcome": "પાછા સ્વાગત, {{name}}",
+  "stats": {
+    "totalUsers": "કુલ વપરાશકર્તા",
+    "activeToday": "આજે સક્રિય",
+    "revenue": "આવક",
+    "growth": "વૃદ્ધિ"
+  },
+  "table": {
+    "name": "નામ",
+    "status": "સ્થિતિ",
+    "date": "તારીખ",
+    "actions": "ક્રિયાઓ",
+    "empty": "કોઈ ડેટા ઉપલબ્ધ નથી",
+    "page": "{{total}} માંથી પૃષ્ઠ {{current}}"
+  },
+  "notifications": {
+    "title": "સૂચનાઓ",
+    "empty": "કોઈ નવી સૂચના નથી",
+    "new_one": "{{count}} નવી સૂચના",
+    "new_other": "{{count}} નવી સૂચનાઓ"
+  }
+}

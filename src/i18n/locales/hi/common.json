@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "होम",
+    "dashboard": "डैशबोर्ड",
+    "profile": "प्रोफ़ाइल",
+    "settings": "सेटिंग्स",
+    "logout": "लॉगआउट"
+  },
+  "buttons": {
+    "submit": "सबमिट करें",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "back": "वापस",
+    "next": "आगे",
+    "close": "बंद करें",
+    "loading": "लोड हो रहा है..."
+  },
+  "labels": {
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "noResults": "कोई परिणाम नहीं मिला",
+    "required": "आवश्यक",
+    "optional": "वैकल्पिक"
+  },
+  "form": {
+    "company-name": "कंपनी का नाम",
+    "company-placeholder": "कंपनी का नाम चुनें",
+    "buyer-name": "खरीदार का नाम",
+    "buyer-placeholder": "खरीदार का नाम चुनें",
+    "salesman": "विक्रेता",
+    "salesman-placeholder": "विक्रेता चुनें",
+    "broker": "दलाल",
+    "broker-placeholder": "कोई दलाल नहीं",
+    "bill-type": "बिल प्रकार",
+    "bill-type-placeholder": "डॉलर बिल",
+    "terms": "शर्तें",
+    "terms-placeholder": "अग्रिम भुगतान",
+    "remark": "टिप्पणी",
+    "remark-placeholder": "यहाँ नोट जोड़ें...",
+    "error": {
+      "company-required": "कंपनी का नाम आवश्यक है",
+      "buyer-required": "खरीदार का नाम आवश्यक है",
+      "salesman-required": "विक्रेता आवश्यक है"
+    }
+  },
+  "status": {
+    "active": "सक्रिय",
+    "inactive": "निष्क्रिय",
+    "pending": "लंबित",
+    "success": "सफल",
+    "error": "त्रुटि"
+  },
+  "greeting": "नमस्ते, {{name}}!",
+  "items_one": "{{count}} वस्तु",
+  "items_other": "{{count}} वस्तुएं"
+}

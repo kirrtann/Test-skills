@@ -2,16 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from 'node_modules/react-i18next';
 import { FiBell, FiMenu, FiX } from 'react-icons/fi';
 
 import { Button } from '../ui/Button';
 
+import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { useAppStore } from '@/store/useAppStore';
 
 export function Header() {
   const { sidebarOpen, toggleSidebar, user } = useAppStore();
   const pathname = usePathname();
-
+  const { t } = useTranslation('common');
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm">
       <div className="flex items-center gap-3">
@@ -27,28 +29,28 @@ export function Header() {
           🏥 MediCare
         </Link>
       </div>
-
+      <LocaleSwitcher className="..." />
       <nav className="hidden gap-6 text-sm font-medium text-gray-600 md:flex">
         <Link
           href="/"
           id="nav-home-link"
           className={pathname === '/' ? 'text-brand-600' : 'hover:text-gray-900'}
         >
-          Home
+          {t('nav.home')}
         </Link>
         <Link
           href="/dashboard"
           id="nav-dashboard-link"
           className={pathname.startsWith('/dashboard') ? 'text-brand-600' : 'hover:text-gray-900'}
         >
-          Dashboad
+          {t('nav.dashboard')}
         </Link>
         <Link
           href="/appointment"
           id="nav-appointment-link"
           className={pathname.startsWith('/appointment') ? 'text-brand-600' : 'hover:text-gray-900'}
         >
-          Appointments
+          {t('nav.appointments')}
         </Link>
         <Link
           href="/hospital/about"
@@ -57,7 +59,7 @@ export function Header() {
             pathname.startsWith('/hospital/about') ? 'text-brand-600' : 'hover:text-gray-900'
           }
         >
-          About
+          {t('nav.about')}
         </Link>
         <Link
           href="/hospital/contact"
@@ -66,7 +68,7 @@ export function Header() {
             pathname.startsWith('/hospital/contact') ? 'text-brand-600' : 'hover:text-gray-900'
           }
         >
-          Contect
+          {t('nav.contact')}
         </Link>
       </nav>
 
@@ -82,7 +84,7 @@ export function Header() {
           <span className="text-sm font-medium text-gray-700">{user.name}</span>
         ) : (
           <Button variant="primary" size="sm" id="sign-in-btn">
-            Sign In
+            {t('nav.signIn')}
           </Button>
         )}
       </div>

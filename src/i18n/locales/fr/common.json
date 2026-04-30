@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "logout": "Déconnexion"
+  },
+  "buttons": {
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "back": "Retour",
+    "next": "Suivant",
+    "close": "Fermer",
+    "loading": "Chargement..."
+  },
+  "labels": {
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "noResults": "Aucun résultat trouvé",
+    "required": "Obligatoire",
+    "optional": "Optionnel"
+  },
+  "form": {
+    "company-name": "Nom de l'entreprise",
+    "company-placeholder": "Sélectionner le nom de l'entreprise",
+    "buyer-name": "Nom de l'acheteur",
+    "buyer-placeholder": "Sélectionner le nom de l'acheteur",
+    "salesman": "Vendeur",
+    "salesman-placeholder": "Sélectionner le vendeur",
+    "broker": "Courtier",
+    "broker-placeholder": "Aucun courtier",
+    "bill-type": "Type de facture",
+    "bill-type-placeholder": "Facture en dollars",
+    "terms": "Conditions",
+    "terms-placeholder": "Paiement anticipé",
+    "remark": "Remarque",
+    "remark-placeholder": "Ajouter une note ici...",
+    "error": {
+      "company-required": "Le nom de l'entreprise est obligatoire",
+      "buyer-required": "Le nom de l'acheteur est obligatoire",
+      "salesman-required": "Le vendeur est obligatoire"
+    }
+  },
+  "status": {
+    "active": "Actif",
+    "inactive": "Inactif",
+    "pending": "En attente",
+    "success": "Succès",
+    "error": "Erreur"
+  },
+  "greeting": "Bonjour, {{name}} !",
+  "items_one": "{{count}} élément",
+  "items_other": "{{count}} éléments"
+}
