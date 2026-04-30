@@ -2,21 +2,14 @@
 
 ## Project File Structure
 
-_Last updated: 2026-04-29 11:31 UTC_
+_Last updated: 2026-04-30 03:57 UTC_
 
 ```
 .
 ├── .agents/
 │   └── skills/
-│       ├── git-commit-changelog/
-│       │   └── SKILL.md
-│       └── i18n-translation/
-│           ├── SKILL.md
-│           └── references/
-│               ├── i18next-config.md
-│               ├── i18next-types.md
-│               ├── locale-templates.md
-│               └── next-intl-config.md
+│       └── git-commit-changelog/
+│           └── SKILL.md
 ├── .env.example
 ├── .env.local
 ├── .env.production
@@ -63,13 +56,6 @@ _Last updated: 2026-04-29 11:31 UTC_
 │   └── index.html
 ├── postcss.config.mjs
 ├── public/
-│   └── locales/
-│       ├── en/
-│       │   ├── common.json
-│       │   └── errors.json
-│       └── fr/
-│           ├── common.json
-│           └── errors.json
 ├── src/
 │   ├── app/
 │   │   ├── globals.css
@@ -93,16 +79,13 @@ _Last updated: 2026-04-29 11:31 UTC_
 │   │   └── ui/
 │   │       ├── AppointmentForm.tsx
 │   │       ├── Button.tsx
-│   │       ├── DataTable.tsx
-│   │       └── LocaleSwitcher.tsx
+│   │       └── DataTable.tsx
 │   ├── constants/
 │   │   └── index.ts
 │   ├── hooks/
 │   │   └── api/
 │   │       ├── index.ts
 │   │       └── useUsers.ts
-│   ├── i18n/
-│   │   └── config.ts
 │   ├── lib/
 │   │   ├── config.ts
 │   │   ├── utils.ts
@@ -151,6 +134,31 @@ _Last updated: 2026-04-29 11:31 UTC_
 ├── tsconfig.json
 └── tsconfig.tsbuildinfo
 ```
+
+---
+
+## 2026-04-30 — fix(deps): drop i18next packages and remove locale infrastructure [delete]
+
+**Commit:** `65d00c0`
+**Date:** 2026-04-30 03:57 UTC
+**Action:** delete
+
+### Changes
+
+- DELETE: `.agents/skills/i18n-translation/SKILL.md` — Removed the i18n agent skill definition
+- DELETE: `.agents/skills/i18n-translation/references/i18next-config.md` — Removed i18next config reference docs
+- DELETE: `.agents/skills/i18n-translation/references/i18next-types.md` — Removed TypeScript type reference for i18next
+- DELETE: `.agents/skills/i18n-translation/references/locale-templates.md` — Removed locale JSON template reference
+- DELETE: `.agents/skills/i18n-translation/references/next-intl-config.md` — Removed next-intl config reference docs
+- DELETE: `public/locales/en/common.json` — Removed English common translation strings
+- DELETE: `public/locales/en/errors.json` — Removed English error translation strings
+- DELETE: `public/locales/fr/common.json` — Removed French common translation strings
+- DELETE: `public/locales/fr/errors.json` — Removed French error translation strings
+- DELETE: `src/components/ui/LocaleSwitcher.tsx` — Removed locale switcher UI component
+- DELETE: `src/i18n/config.ts` — Removed i18next configuration module
+- UPDATE: `package.json` — Dropped i18next, react-i18next, i18next-http-backend, i18next-browser-languagedetector dependencies
+- UPDATE: `src/app/providers.tsx` — Removed I18nextProvider wrapper and i18n import; app now renders QueryClientProvider directly
+- UPDATE: `src/components/layout/Header.tsx` — Replaced `t()` translation calls with hardcoded English strings; removed LocaleSwitcher and useTranslation import
 
 ---
 
