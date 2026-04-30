@@ -2,14 +2,20 @@
 
 ## Project File Structure
 
-_Last updated: 2026-04-30 03:57 UTC_
+_Last updated: 2026-04-30 06:23 UTC_
 
 ```
 .
 ├── .agents/
 │   └── skills/
-│       └── git-commit-changelog/
-│           └── SKILL.md
+│       ├── git-commit-changelog/
+│       │   └── SKILL.md
+│       └── i18n-translation/
+│           ├── SKILL.md
+│           └── references/
+│               ├── locale-json.md
+│               ├── locale-switcher.md
+│               └── templates.md
 ├── .env.example
 ├── .env.local
 ├── .env.production
@@ -56,6 +62,9 @@ _Last updated: 2026-04-30 03:57 UTC_
 │   └── index.html
 ├── postcss.config.mjs
 ├── public/
+│   └── locales/
+│       ├── en/
+│       └── fr/
 ├── src/
 │   ├── app/
 │   │   ├── globals.css
@@ -73,6 +82,7 @@ _Last updated: 2026-04-30 03:57 UTC_
 │   │       └── contact/
 │   │           └── page.tsx
 │   ├── components/
+│   │   ├── LocaleSwitcher.tsx
 │   │   ├── layout/
 │   │   │   ├── Header.tsx
 │   │   │   └── Sidebar.tsx
@@ -86,6 +96,28 @@ _Last updated: 2026-04-30 03:57 UTC_
 │   │   └── api/
 │   │       ├── index.ts
 │   │       └── useUsers.ts
+│   ├── i18n/
+│   │   ├── config.ts
+│   │   ├── index.ts
+│   │   ├── types.ts
+│   │   ├── utils.ts
+│   │   └── locales/
+│   │       ├── en/
+│   │       │   ├── auth.json
+│   │       │   ├── common.json
+│   │       │   └── dashboard.json
+│   │       ├── fr/
+│   │       │   ├── auth.json
+│   │       │   ├── common.json
+│   │       │   └── dashboard.json
+│   │       ├── gu/
+│   │       │   ├── auth.json
+│   │       │   ├── common.json
+│   │       │   └── dashboard.json
+│   │       └── hi/
+│   │           ├── auth.json
+│   │           ├── common.json
+│   │           └── dashboard.json
 │   ├── lib/
 │   │   ├── config.ts
 │   │   ├── utils.ts
@@ -134,6 +166,41 @@ _Last updated: 2026-04-30 03:57 UTC_
 ├── tsconfig.json
 └── tsconfig.tsbuildinfo
 ```
+
+---
+
+## 2026-04-30 — refactor(header): replace hardcoded nav labels with i18n translation keys [update]
+
+**Commit:** `51b3976`
+**Date:** 2026-04-30 06:23 UTC
+**Action:** update
+
+### Changes
+
+- NEW: `.agents/skills/i18n-translation/SKILL.md` — Agent skill definition for scaffolding i18n setup workflows
+- NEW: `.agents/skills/i18n-translation/references/locale-json.md` — Reference docs for locale JSON structure
+- NEW: `.agents/skills/i18n-translation/references/locale-switcher.md` — Reference docs for the LocaleSwitcher component pattern
+- NEW: `.agents/skills/i18n-translation/references/templates.md` — Locale JSON templates reference
+- NEW: `src/components/LocaleSwitcher.tsx` — Language switcher component that stores preference in localStorage
+- NEW: `src/i18n/config.ts` — i18next configuration with EN/FR/HI/GU language support
+- NEW: `src/i18n/index.ts` — i18n module entry point; exports initialized i18next instance
+- NEW: `src/i18n/types.ts` — TypeScript types for locale keys and namespaces
+- NEW: `src/i18n/utils.ts` — Utility helpers for locale detection and switching
+- NEW: `src/i18n/locales/en/auth.json` — English auth namespace translation strings
+- NEW: `src/i18n/locales/en/common.json` — English common namespace translation strings
+- NEW: `src/i18n/locales/en/dashboard.json` — English dashboard namespace translation strings
+- NEW: `src/i18n/locales/fr/auth.json` — French auth namespace translation strings
+- NEW: `src/i18n/locales/fr/common.json` — French common namespace translation strings
+- NEW: `src/i18n/locales/fr/dashboard.json` — French dashboard namespace translation strings
+- NEW: `src/i18n/locales/gu/auth.json` — Gujarati auth namespace translation strings
+- NEW: `src/i18n/locales/gu/common.json` — Gujarati common namespace translation strings
+- NEW: `src/i18n/locales/gu/dashboard.json` — Gujarati dashboard namespace translation strings
+- NEW: `src/i18n/locales/hi/auth.json` — Hindi auth namespace translation strings
+- NEW: `src/i18n/locales/hi/common.json` — Hindi common namespace translation strings
+- NEW: `src/i18n/locales/hi/dashboard.json` — Hindi dashboard namespace translation strings
+- UPDATE: `package.json` — Added `i18next` and `react-i18next` runtime dependencies
+- UPDATE: `package-lock.json` — Lockfile updated for new i18n packages
+- UPDATE: `src/components/layout/Header.tsx` — Replaced hardcoded nav labels with `t('nav.*')` translation keys; added `useTranslation` hook and `LocaleSwitcher` component
 
 ---
 
