@@ -28,7 +28,9 @@ import hiCommon from './locales/hi/common.json';
 import hiDashboard from './locales/hi/dashboard.json';
 
 i18n.use(initReactI18next).init({
-  lng: (localStorage.getItem('lang') as LangCode) ?? DEFAULT_LANG,
+  lng:
+    ((typeof window !== 'undefined' ? localStorage.getItem('lang') : null) as LangCode) ??
+    DEFAULT_LANG,
   fallbackLng: DEFAULT_LANG,
   defaultNS: 'common',
   ns: ['common', 'auth', 'dashboard'],
