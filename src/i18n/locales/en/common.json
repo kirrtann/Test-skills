@@ -3,6 +3,10 @@
     "home": "Home",
     "dashboard": "Dashboard",
     "profile": "Profile",
+    "appointments": "Appointments",
+    "about": "About",
+    "contact": "Contact",
+    "signIn": "Sign In",
     "settings": "Settings",
     "logout": "Logout"
   },

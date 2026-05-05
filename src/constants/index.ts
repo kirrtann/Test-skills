@@ -5,7 +5,6 @@ export const ROUTES = {
   DASHBOARD: '/dashboard',
   USERS: '/dashboard/users',
   SETTINGS: '/dashboard/settings',
-  LOGIN: '/login',
 } as const;
 
 export const PAGINATION_DEFAULTS = {

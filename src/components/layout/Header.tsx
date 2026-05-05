@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'node_modules/react-i18next';
-import { FiBell, FiMenu, FiX } from 'react-icons/fi';
+import { FiBell } from 'react-icons/fi';
 
 import { Button } from '../ui/Button';
 
@@ -11,25 +11,17 @@ import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { useAppStore } from '@/store/useAppStore';
 
 export function Header() {
-  const { sidebarOpen, toggleSidebar, user } = useAppStore();
+  const { user } = useAppStore();
   const pathname = usePathname();
   const { t } = useTranslation('common');
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm">
       <div className="flex items-center gap-3">
-        <button
-          id="sidebar-toggle-btn"
-          onClick={toggleSidebar}
-          aria-label={sidebarOpen ? 'Close sidebar' : 'Open sidebar'}
-          className="rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-100"
-        >
-          {sidebarOpen ? <FiX size={20} /> : <FiMenu size={20} />}
-        </button>
         <Link href="/" className="text-lg font-bold text-brand-600" id="header-logo-link">
-          🏥 MediCare
+          MediCare
         </Link>
       </div>
-      <LocaleSwitcher className="..." />
+      <LocaleSwitcher className="rounded-lg border bg-white p-1" />
       <nav className="hidden gap-6 text-sm font-medium text-gray-600 md:flex">
         <Link
           href="/"

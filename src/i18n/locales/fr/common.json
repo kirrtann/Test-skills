@@ -3,6 +3,10 @@
     "home": "Accueil",
     "dashboard": "Tableau de bord",
     "profile": "Profil",
+    "appointments": "Rendez-vous",
+    "about": "À propos",
+    "contact": "Contact",
+    "signIn": "Se connecter",
     "settings": "Paramètres",
     "logout": "Déconnexion"
   },

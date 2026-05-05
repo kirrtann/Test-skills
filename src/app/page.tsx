@@ -19,7 +19,7 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen font-shinycrystal">
       {/* Hero */}
       <section className="bg-gradient-to-br from-brand-700 to-brand-500 px-6 py-20 text-white">
         <div className="mx-auto max-w-5xl space-y-6 text-center">

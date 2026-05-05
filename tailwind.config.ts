@@ -25,6 +25,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        shinycrystal: ['var(--font-shinycrystal)', 'sans-serif'],
       },
     },
   },

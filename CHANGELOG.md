@@ -2,7 +2,7 @@
 
 ## Project File Structure
 
-_Last updated: 2026-04-30 06:23 UTC_
+_Last updated: 2026-05-01 04:56 UTC_
 
 ```
 .
@@ -10,12 +10,17 @@ _Last updated: 2026-04-30 06:23 UTC_
 │   └── skills/
 │       ├── git-commit-changelog/
 │       │   └── SKILL.md
-│       └── i18n-translation/
+│       ├── i18n-translation/
+│       │   ├── SKILL.md
+│       │   └── references/
+│       │       ├── locale-json.md
+│       │       ├── locale-switcher.md
+│       │       └── templates.md
+│       └── playwright-testing/
 │           ├── SKILL.md
 │           └── references/
-│               ├── locale-json.md
-│               ├── locale-switcher.md
-│               └── templates.md
+│               ├── config.md
+│               └── test-patterns.md
 ├── .env.example
 ├── .env.local
 ├── .env.production
@@ -32,7 +37,10 @@ _Last updated: 2026-04-30 06:23 UTC_
 │   └── settings.json
 ├── CHANGELOG.md
 ├── e2e/
+│   ├── appointment.spec.ts
+│   ├── dashboard.spec.ts
 │   ├── home.spec.ts
+│   ├── hospital.spec.ts
 │   └── pages/
 │       └── HomePage.ts
 ├── eslint.config.mjs
@@ -44,21 +52,8 @@ _Last updated: 2026-04-30 06:23 UTC_
 ├── playwright.config.ts
 ├── playwright-report/
 │   ├── data/
-│   │   ├── 0f56a99bc31b335044428ce88d126148dfa2dafa.png
-│   │   ├── 1702cac9b637e378efb5b754794f09a41469dd88.png
-│   │   ├── 1b9d59d67fff4d1284ba98a73a4d2c9442687e5c.png
-│   │   ├── 24c0576bbe0b5eea7bdfbbe2a57c33f1c8799382.png
-│   │   ├── 2a5c152082a341ca848ec0123aac5e98a67c5b73.md
-│   │   ├── 4510e108286d1487494b835f1b9e1ddcf1d3e9a9.png
-│   │   ├── 49e474875b39901e54ec64ea22f146bf3269bbb6.png
-│   │   ├── 725362cf4e5853d7d657872368de92760f8107ac.png
-│   │   ├── 991608bee066f534f01f3328b9621526cfb5fd15.md
-│   │   ├── a2052647a94500ed2df2150467dbb2872bbdf7c1.md
-│   │   ├── bdfcb6749aeab61f3adfb6cc254c91534ecdbaae.png
-│   │   ├── bf838ce8cfb70576cbb542ead474a84e6fa525c0.md
-│   │   ├── cb276412c03bdf73b0adf90154080c414a9461a3.md
-│   │   ├── d7da6fc58ac8cb7b4d1504d98f734108594b27c2.png
-│   │   └── fcdfd5a135c7417a1e0523420179936345522295.md
+│   │   ├── 0356b63fbf1e93e4819c70cc2d38d058a0f132d8.png
+│   │   └── 9136a676224586ddec92beb3ac961c74c225d1d5.md
 │   └── index.html
 ├── postcss.config.mjs
 ├── public/
@@ -135,37 +130,32 @@ _Last updated: 2026-04-30 06:23 UTC_
 │       └── index.ts
 ├── tailwind.config.ts
 ├── test-results/
-│   ├── home-Home-page-loads-and-shows-main-heading-chromium/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
-│   ├── home-Home-page-loads-and-shows-main-heading-firefox/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
-│   ├── home-Home-page-loads-and-shows-main-heading-Mobile-Chrome/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
-│   ├── home-Home-page-navigate-to-dashboard-chromium/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
-│   ├── home-Home-page-navigate-to-dashboard-firefox/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
 │   ├── home-Home-page-navigate-to-dashboard-Mobile-Chrome/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
-│   ├── home-Home-page-shows-stack-overview-cards-chromium/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
-│   ├── home-Home-page-shows-stack-overview-cards-firefox/
-│   │   ├── error-context.md
-│   │   └── test-failed-1.png
-│   ├── home-Home-page-shows-stack-overview-cards-Mobile-Chrome/
 │   │   ├── error-context.md
 │   │   └── test-failed-1.png
 │   └── .last-run.json
 ├── tsconfig.json
 └── tsconfig.tsbuildinfo
 ```
+
+---
+
+## 2026-05-01 — test(e2e): add e2e tests for appointment, dashboard, hospital pages [new]
+
+**Commit:** `015ce9d`
+**Date:** 2026-05-01 04:56 UTC
+**Action:** new
+
+### Changes
+
+- NEW: `e2e/appointment.spec.ts` — Full Playwright test suite for the appointment booking page: title, how-it-works steps, form fields, upcoming appointments list, and form submission
+- NEW: `e2e/dashboard.spec.ts` — Tests for dashboard page: title, all four stat cards, recent appointments list, and book-appointment link
+- NEW: `e2e/hospital.spec.ts` — Tests for hospital home, about, and contact pages including navigation, stats, team members, and contact form submission
+- NEW: `.agents/skills/playwright-testing/SKILL.md` — Agent skill definition for Playwright E2E testing setup and test-writing workflows
+- NEW: `.agents/skills/playwright-testing/references/config.md` — Reference docs for Playwright configuration patterns
+- NEW: `.agents/skills/playwright-testing/references/test-patterns.md` — Reference docs for common Playwright test patterns
+- UPDATE: `e2e/home.spec.ts` — Updated title matcher to `/MediCare Hospital/`, replaced stack card text with department names, changed nav click to `#nav-dashboard-link` selector with `force: true` for all viewport sizes
+- UPDATE: `src/i18n/config.ts` — Added SSR guard (`typeof window !== 'undefined'`) around `localStorage.getItem('lang')` to prevent crashes during server-side rendering
 
 ---
 

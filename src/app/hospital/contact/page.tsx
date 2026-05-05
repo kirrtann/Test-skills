@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { FiMapPin, FiPhone, FiMail, FiClock, FiSend } from 'react-icons/fi';
 
 const contactDetails = [
-  { icon: FiPhone, label: 'Phone', value: '(555) 123-4567', sub: 'Mon–Fri 8 AM – 8 PM' },
+  { icon: FiPhone, label: 'Phone', value: '(555) 123-4567', sub: 'Mon-Fri 8 AM - 8 PM' },
   { icon: FiPhone, label: 'Emergency', value: '(555) 911-0000', sub: '24/7 Emergency Line' },
   { icon: FiMail, label: 'Email', value: 'info@medicare.example', sub: 'Reply within 24 hours' },
   { icon: FiMapPin, label: 'Address', value: '123 Health Avenue', sub: 'Care City, Country 10001' },
-  { icon: FiClock, label: 'Hours', value: 'Mon–Fri: 8 AM – 8 PM', sub: 'Weekends: 10 AM – 4 PM' },
+  { icon: FiClock, label: 'Hours', value: 'Mon-Fri: 8 AM - 8 PM', sub: 'Weekends: 10 AM - 4 PM' },
 ];
 
 export default function HospitalContact() {
