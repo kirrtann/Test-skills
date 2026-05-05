@@ -45,7 +45,7 @@ const steps = [
 
 export default function AppointmentPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       {/* Hero Banner */}
       <div className="bg-gradient-to-r from-brand-700 to-brand-500 px-6 py-12 text-white">
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 md:flex-row">
@@ -79,7 +79,7 @@ export default function AppointmentPage() {
               </div>
               <div>
                 <div className="text-sm font-semibold text-gray-800">{title}</div>
-                <div className="mt-0.5 text-xs text-gray-400">{desc}</div>
+                <div className="mt-0.5 text-xs text-gray-500">{desc}</div>
               </div>
             </div>
           ))}
@@ -158,7 +158,7 @@ export default function AppointmentPage() {
         <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
           <div className="border-b border-gray-100 p-5">
             <h2 className="font-semibold text-gray-800">Upcoming Appointments</h2>
-            <p className="mt-0.5 text-xs text-gray-400">Scheduled for the next 7 days</p>
+            <p className="mt-0.5 text-xs text-gray-500">Scheduled for the next 7 days</p>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -180,13 +180,13 @@ export default function AppointmentPage() {
                   <tr key={apt.id} className="transition-colors hover:bg-gray-50">
                     <td className="px-5 py-3.5">
                       <div className="font-medium text-gray-800">{apt.patient}</div>
-                      <div className="text-xs text-gray-400">{apt.id}</div>
+                      <div className="text-xs text-gray-500">{apt.id}</div>
                     </td>
                     <td className="px-5 py-3.5 text-gray-600">{apt.doctor}</td>
                     <td className="hidden px-5 py-3.5 text-gray-500 md:table-cell">{apt.dept}</td>
                     <td className="hidden px-5 py-3.5 sm:table-cell">
                       <div className="text-gray-700">{apt.date}</div>
-                      <div className="text-xs text-gray-400">{apt.time}</div>
+                      <div className="text-xs text-gray-500">{apt.time}</div>
                     </td>
                     <td className="px-5 py-3.5">
                       <span
@@ -202,6 +202,6 @@ export default function AppointmentPage() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

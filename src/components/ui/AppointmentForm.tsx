@@ -30,6 +30,8 @@ export default function AppointmentForm() {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <input
           name="name"
+          id="appt-name"
+          aria-label="Full name"
           value={form.name}
           onChange={onChange}
           required
@@ -38,6 +40,8 @@ export default function AppointmentForm() {
         />
         <input
           name="email"
+          id="appt-email"
+          aria-label="Email address"
           value={form.email}
           onChange={onChange}
           required
@@ -50,15 +54,32 @@ export default function AppointmentForm() {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <input
           name="phone"
+          id="appt-phone"
+          aria-label="Phone number"
           value={form.phone}
           onChange={onChange}
           placeholder="Phone"
           className="input"
         />
-        <input name="date" value={form.date} onChange={onChange} type="date" className="input" />
+        <input
+          name="date"
+          id="appt-date"
+          aria-label="Appointment date"
+          value={form.date}
+          onChange={onChange}
+          type="date"
+          className="input"
+        />
       </div>
 
-      <select name="department" value={form.department} onChange={onChange} className="input">
+      <select
+        name="department"
+        id="appt-department"
+        aria-label="Select department"
+        value={form.department}
+        onChange={onChange}
+        className="input"
+      >
         <option>General</option>
         <option>Cardiology</option>
         <option>Orthopedics</option>
@@ -68,6 +89,8 @@ export default function AppointmentForm() {
 
       <textarea
         name="message"
+        id="appt-message"
+        aria-label="Additional notes"
         value={form.message}
         onChange={onChange}
         placeholder="Additional notes"

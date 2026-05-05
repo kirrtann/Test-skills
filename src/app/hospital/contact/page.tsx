@@ -28,7 +28,7 @@ export default function HospitalContact() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       {/* Hero */}
       <div className="bg-gradient-to-r from-brand-700 to-brand-500 px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl space-y-3">
@@ -51,11 +51,11 @@ export default function HospitalContact() {
                 <Icon size={18} />
               </div>
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-gray-400">
+                <div className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                   {label}
                 </div>
                 <div className="mt-0.5 text-sm font-semibold text-gray-800">{value}</div>
-                <div className="mt-0.5 text-xs text-gray-400">{sub}</div>
+                <div className="mt-0.5 text-xs text-gray-500">{sub}</div>
               </div>
             </div>
           ))}
@@ -90,6 +90,7 @@ export default function HospitalContact() {
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <input
                     name="name"
+                    aria-label="Full Name"
                     value={form.name}
                     onChange={onChange}
                     required
@@ -98,6 +99,7 @@ export default function HospitalContact() {
                   />
                   <input
                     name="email"
+                    aria-label="Email Address"
                     value={form.email}
                     onChange={onChange}
                     required
@@ -109,6 +111,7 @@ export default function HospitalContact() {
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <input
                     name="phone"
+                    aria-label="Phone (optional)"
                     value={form.phone}
                     onChange={onChange}
                     placeholder="Phone (optional)"
@@ -116,6 +119,7 @@ export default function HospitalContact() {
                   />
                   <select
                     name="subject"
+                    aria-label="Subject"
                     value={form.subject}
                     onChange={onChange}
                     required
@@ -131,6 +135,7 @@ export default function HospitalContact() {
                 </div>
                 <textarea
                   name="message"
+                  aria-label="Your message"
                   value={form.message}
                   onChange={onChange}
                   required
@@ -204,6 +209,6 @@ export default function HospitalContact() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

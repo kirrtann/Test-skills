@@ -165,7 +165,7 @@ const statusConfig: Record<string, { label: string; className: string; icon: Rea
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
+    <main className="min-h-screen bg-slate-50 p-6">
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Hero Header */}
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 p-6 text-white shadow-lg">
@@ -227,7 +227,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
               <div>
                 <h2 className="font-semibold text-gray-900">Recent Appointments</h2>
-                <p className="mt-0.5 text-xs text-gray-400">Today's schedule overview</p>
+                <p className="mt-0.5 text-xs text-gray-500">Today's schedule overview</p>
               </div>
               <Link
                 href="/appointment"
@@ -239,7 +239,7 @@ export default function DashboardPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-50/70 text-xs uppercase tracking-wide text-gray-400">
+                  <tr className="bg-gray-50/70 text-xs uppercase tracking-wide text-gray-500">
                     <th className="px-6 py-3 text-left font-semibold">Patient</th>
                     <th className="px-6 py-3 text-left font-semibold">Doctor</th>
                     <th className="hidden px-6 py-3 text-left font-semibold md:table-cell">Dept</th>
@@ -258,7 +258,7 @@ export default function DashboardPage() {
                       >
                         <td className="px-6 py-4">
                           <div className="font-semibold text-gray-800">{apt.patient}</div>
-                          <div className="text-xs text-gray-400">{apt.id}</div>
+                          <div className="text-xs text-gray-500">{apt.id}</div>
                         </td>
                         <td className="px-6 py-4 text-gray-600">{apt.doctor}</td>
                         <td className="hidden px-6 py-4 text-gray-500 md:table-cell">{apt.dept}</td>
@@ -302,7 +302,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="truncate text-sm font-semibold text-gray-800">{name}</div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-xs text-gray-500">
                         {dept} · {patients} patients
                       </div>
                     </div>
@@ -356,6 +356,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

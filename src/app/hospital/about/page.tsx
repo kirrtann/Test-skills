@@ -47,7 +47,7 @@ const team = [
 
 export default function HospitalAbout() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       {/* Hero */}
       <div className="bg-gradient-to-br from-brand-800 to-brand-500 px-6 py-20 text-center text-white">
         <div className="mx-auto max-w-3xl space-y-4">
@@ -144,7 +144,7 @@ export default function HospitalAbout() {
                 <div>
                   <div className="font-semibold text-gray-800">{name}</div>
                   <div className="mt-0.5 text-xs font-medium text-brand-600">{role}</div>
-                  <div className="mt-1 text-xs text-gray-400">{exp} experience</div>
+                  <div className="mt-1 text-xs text-gray-500">{exp} experience</div>
                 </div>
               </div>
             ))}
@@ -167,6 +167,6 @@ export default function HospitalAbout() {
           </Link>
         </section>
       </div>
-    </div>
+    </main>
   );
 }
