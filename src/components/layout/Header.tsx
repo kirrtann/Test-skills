@@ -75,9 +75,11 @@ export function Header() {
         {user ? (
           <span className="text-sm font-medium text-gray-700">{user.name}</span>
         ) : (
-          <Button variant="primary" size="sm" id="sign-in-btn">
-            {t('nav.signIn')}
-          </Button>
+          <Link href="/login">
+            <Button variant="primary" size="sm" id="sign-in-btn">
+              {t('nav.signIn')}
+            </Button>
+          </Link>
         )}
       </div>
     </header>
