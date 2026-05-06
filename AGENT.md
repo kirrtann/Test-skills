@@ -88,15 +88,73 @@
 - Never use `Function` type — define specific signature
 - Use `Readonly<T>`, `NonNullable<T>`, `ReturnType<T>` utility types
 
-## 10. IMPORTS
+## 10. ESLINT RULES
+
+- All output code must be ESLint-clean — zero warnings, zero errors
+- Follow rule severity: `error` blocks output, `warn` must be resolved
+- **Line rules:**
+  - Max line length: **100 chars** — break longer lines
+  - Max file length: **300 lines** — split if exceeded
+  - No trailing whitespace
+  - Always a newline at end of file
+- **Type rules:**
+  - `@typescript-eslint/no-explicit-any` — enforced, no exceptions
+  - `@typescript-eslint/explicit-function-return-type` — all functions typed
+  - `@typescript-eslint/no-unused-vars` — remove before output
+  - `@typescript-eslint/consistent-type-imports` — use `import type`
+  - `@typescript-eslint/no-non-null-assertion` — no `!` assertions
+- **Logic rules:**
+  - `no-console` — use a logger utility, never raw `console.log`
+  - `eqeqeq` — always `===`, never `==`
+  - `no-shadow` — no variable shadowing outer scope
+  - `prefer-const` — enforced
+  - `no-var` — enforced
+- **React rules (if applicable):**
+  - `react-hooks/rules-of-hooks` — hooks only at top level
+  - `react-hooks/exhaustive-deps` — all deps in dependency arrays
+  - `react/self-closing-comp` — `<Component />` not `<Component></Component>`
+
+## 11. PRETTIER FORMATTING
+
+- All output code must be Prettier-formatted before responding
+- **Config (match project `.prettierrc` if present, else use these defaults):**
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "lf"
+}
+```
+
+- Single quotes for strings — `'value'` not `"value"`
+- Always trailing commas in multiline (params, arrays, objects)
+- Arrow functions always wrap params — `(x) => x` not `x => x`
+- Opening brace on same line — no Allman style
+- Multiline ternaries: condition on its own line
+- Object destructuring: one prop per line if 3+ props
+
+## 12. IMPORTS
 
 - Check existing utils/hooks before adding a new dependency
 - Stick to project's existing UI library — never mix
-- Group: external libs → internal modules → types → styles
+- Group order (enforced by `eslint-plugin-import`):
+  1. External libs
+  2. Internal modules (absolute paths)
+  3. Relative imports
+  4. Type imports (`import type`)
+  5. Styles
+- Blank line between each group
 - Remove unused imports before output
 - `import type { }` for type-only imports
 
-## 11. COMPONENTS
+## 13. COMPONENTS
 
 - Props interface defined above component
 - No logic inside JSX — extract to variables/handlers
@@ -104,17 +162,19 @@
 - No inline styles unless truly one-off
 - Semantic HTML: `button`, `nav`, `main`, `section`
 
-## 12. STATE & DATA
+## 14. STATE & DATA
 
 - Keep state as local as possible — lift only when needed
 - Derive values from state — no redundant state
 - API calls in service files, not components
 - Always handle loading/error/success explicitly
 
-## 13. SAFETY CHECK (before every task)
+## 15. SAFETY CHECK (before every task)
 
 - File path clear? → No → ask
 - Creating a duplicate? → Yes → flag it
 - New library needed? → Yes → confirm with user first
 - Output is `.ts`/`.tsx`? → No → fix before responding
 - New pattern introduced? → Yes → suggest structure update
+- Code passes ESLint? → No → fix before responding
+- Code is Prettier-formatted? → No → format before responding
